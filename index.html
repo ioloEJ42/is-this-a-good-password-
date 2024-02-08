@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/png" href="QuestionMark.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>good password?</title>
+    <title>is this a good password?</title>
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
@@ -12,18 +13,31 @@
     />
   </head>
   <body>
-    <div class="checkerContainer">
-      <h1 class="title">is this a good password?</h1>
-      <div class="form-group" data-placeholder="Password">
-        <input type="password" id="passwordChecker" />
-        <span class="passTypeToggle" title="Show"
-          ><i class="fa-solid fa-eye"></i
-        ></span>
-      </div>
-      <div class="message"></div>
-      <ul class="feedback"></ul> <!-- New container for feedback items -->
-    </div>
+    <div class="main-content">
+      <!-- All other page content goes here -->
 
+      <div class="checkerContainer">
+        <h1 class="title">is this a good password?</h1>
+        <div class="form-group" data-placeholder="Password">
+          <input type="password" id="passwordChecker" />
+          <span class="passTypeToggle" title="Show"
+            ><i class="fa-solid fa-eye"></i
+          ></span>
+        </div>
+        <div class="message"></div>
+        <ul class="feedback"></ul>
+        <!-- New container for feedback items -->
+      </div>
+    </div>
     <script src="script.js"></script>
+    <footer class="site-footer">
+      <div class="footer-content">
+        Made by
+        <a href="https://github.com/ioloEJ42" target="_blank"
+          >Iolo Evans Jones</a
+        >
+        <p>Please check out my other security-related content on my github! :)</p>
+      </div>
+    </footer>
   </body>
 </html>

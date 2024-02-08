@@ -1,8 +1,7 @@
-
 let input = document.querySelector("#passwordChecker");
 let formGroup = document.querySelector(".form-group");
 let message = document.querySelector(".message");
-let feedbackList = document.querySelector('.feedback'); // Ensure this is declared globally if used across multiple functions
+let feedbackList = document.querySelector(".feedback"); // Ensure this is declared globally if used across multiple functions
 let passTypeToggle = document.querySelector(".passTypeToggle");
 let strongPassword = new RegExp(
   "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})"
@@ -22,53 +21,47 @@ document.body.addEventListener("click", function (e) {
 });
 
 let checkPasswordStrength = (password) => {
-    let score = 0;
-    let feedback = []; // Initialize feedback array here
-    
-    // Clear previous feedback
-    feedbackList.innerHTML = '';
+  let score = 0;
+  let feedback = []; // Initialize feedback array here
 
-    // Length check
-    if (password.length >= 8) {
-      score += 2;
-    } else {
-      feedback.push("Use at least 8 characters.");
-    }
-  
-    // Complexity checks
-    if (/[A-Z]/.test(password)) score += 2;
-    else feedback.push("Include an uppercase letter.");
-  
-    if (/[a-z]/.test(password)) score += 2;
-    else feedback.push("Include a lowercase letter.");
-  
-    if (/[0-9]/.test(password)) score += 2;
-    else feedback.push("Include a number.");
-  
-    if (/[\W_]/.test(password)) score += 2;
-    else feedback.push("Include a special character.");
-  
-    // Advanced checks for patterns
-    if (/(\d{3,})|([a-zA-Z]{2,})/.test(password)) {
-      score -= 2; // Penalize sequences and repeats
-      feedback.push("Avoid sequences and repeated characters.");
-    }
-  
+  // Clear previous feedback
+  feedbackList.innerHTML = "";
 
-    // Check against common passwords
-    if (commonPasswords.includes(password)) {
-      feedback.push("Your password appears on Wikipedia's top 1000 most common passwords. Don't use this!");
+  // Length check
+  if (password.length >= 8) {
+    score += 2;
+  } else {
+    feedback.push("Use at least 8 characters.");
   }
-    
-    // Final assessment
-    let strength = "weak";
-    if (score >= 8) strength = "strong";
-    else if (score >= 5) strength = "medium";
-  
-    return {
-      strength: strength,
-      feedback: feedback, // Return feedback as an array
-    };
+
+  // Complexity checks
+  if (/[A-Z]/.test(password)) score += 2;
+  else feedback.push("Include an uppercase letter.");
+
+  if (/[a-z]/.test(password)) score += 2;
+  else feedback.push("Include a lowercase letter.");
+
+  if (/[0-9]/.test(password)) score += 2;
+  else feedback.push("Include a number.");
+
+  if (/[\W_]/.test(password)) score += 2;
+  else feedback.push("Include a special character.");
+
+  // Advanced checks for patterns
+  if (/(\d{3,})|([a-zA-Z]{2,})/.test(password)) {
+    score -= 2; // Penalize sequences and repeats
+    feedback.push("Avoid sequences and repeated characters.");
+  }
+
+  // Final assessment
+  let strength = "weak";
+  if (score >= 8) strength = "strong";
+  else if (score >= 5) strength = "medium";
+
+  return {
+    strength: strength,
+    feedback: feedback, // Return feedback as an array
+  };
 };
 
 input.addEventListener("keyup", (e) => {
@@ -86,23 +79,23 @@ input.addEventListener("keyup", (e) => {
     formGroup.classList.remove("medium");
     formGroup.classList.remove("strong");
     message.innerHTML = "";
-    feedbackList.innerHTML = ''; // Clear feedback when password is empty
+    feedbackList.innerHTML = ""; // Clear feedback when password is empty
   } else {
     let result = checkPasswordStrength(password);
     message.innerHTML = "This password's strength is: " + result.strength + ".";
 
     // Clear previous feedback
-    feedbackList.innerHTML = '';
+    feedbackList.innerHTML = "";
 
     // Display detailed feedback
     result.feedback.forEach((item) => {
-      let li = document.createElement('li');
+      let li = document.createElement("li");
       li.textContent = item;
       feedbackList.appendChild(li);
     });
 
-    message.className = 'message ' + result.strength; // Add class based on strength
-    formGroup.className = 'form-group ' + result.strength; // Add class based on strength
+    message.className = "message " + result.strength; // Add class based on strength
+    formGroup.className = "form-group " + result.strength; // Add class based on strength
   }
 });
 

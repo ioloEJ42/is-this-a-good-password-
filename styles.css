@@ -25,6 +25,7 @@ body {
   justify-content: center;
   background: rgb(0 0 0 / 35%);
   box-shadow: 0 0 20px rgb(76 76 76 / 33%);
+  margin: auto; /* This will center it within the .main-content */
 }
 
 .checkerContainer .title {
@@ -158,3 +159,50 @@ body {
 .weak .feedback li { color: #d9534f; }
 .medium .feedback li { color: #f0ad4e; }
 .strong .feedback li { color: #5cb85c; }
+
+/* Ensure the body and html elements take up the full viewport height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Flexbox layout for the main content to push the footer down */
+body {
+  display: flex;
+  flex-direction: column; /* Align children vertically */
+  min-height: 100vh; /* Full viewport height */
+  align-items: center; /* Center children horizontally */
+  justify-content: center; /* Center children vertically */
+  background-color: rgb(0 0 0 / 85%);
+  margin: 0; /* Remove default margin */
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* Take the full height of its parent */
+  width: 100%; /* Take the full width for horizontal centering */
+}
+
+/* Footer styling */
+.site-footer {
+  background-color: #222; /* Adjusted for a softer black */
+  color: #ccc; /* Lighter grey text for better readability */
+  text-align: center;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-content a {
+  color: #f0f0f0; /* Light grey link color */
+  text-decoration: none;
+}
+
+.footer-content a:hover {
+  color: #ffffff; /* White color on hover for contrast */
+  text-decoration: underline;
+}
