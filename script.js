@@ -110,3 +110,4 @@ passTypeToggle.addEventListener("click", (e) => {
   document.querySelector(".passTypeToggle i").classList.toggle("fa-eye");
   document.querySelector(".passTypeToggle i").classList.toggle("fa-eye-slash");
 });
+
