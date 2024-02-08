@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0 0 0 / 85%);
+}
+
+.checkerContainer {
+  width: 25rem;
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.6rem;
+  flex-direction: column;
+  justify-content: center;
+  background: rgb(0 0 0 / 35%);
+  box-shadow: 0 0 20px rgb(76 76 76 / 33%);
+}
+
+.checkerContainer .title {
+  color: #ccc;
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+  font-size: clamp(1rem, 4vw, 1.6rem);
+}
+
+.checkerContainer .form-group {
+  height: 2.6rem;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 4rem);
+}
+
+.checkerContainer .form-group #passwordChecker {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+  color: #ccccccbd;
+  position: relative;
+  letter-spacing: 1px;
+  border-radius: 0.4rem;
+  background: transparent;
+  padding: 0 2rem 0 0.5rem;
+  border: 3px solid #3b3b3b;
+  transition: background 0.19s ease-in-out;
+}
+
+.checkerContainer .passTypeToggle {
+  top: 50%;
+  right: 4%;
+  display: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #ccccccbd;
+  position: absolute;
+  transform: translate(10%, -50%);
+  font-family: "Font Awesome 5 Free";
+}
+
+.checkerContainer .form-group::before {
+  left: 0;
+  top: 50%;
+  z-index: 1;
+  padding: 0 4px;
+  font-size: 14px;
+  user-select: none;
+  color: #ccccccbd;
+  position: absolute;
+  pointer-events: none;
+  content: attr(data-placeholder);
+  transform: translate(15%, -50%);
+  transition: transform 0.2s ease-in-out;
+}
+
+.checkerContainer .form-group.focus::before {
+  background: #191919;
+  transform: translate(15%, -130%);
+}
+
+.checkerContainer .form-group #passwordChecker:focus label {
+  color: #fff;
+}
+
+.checkerContainer .form-group.weak #passwordChecker {
+  color: rgb(239, 68, 68);
+  border: 2px solid rgb(239, 68, 68);
+}
+
+.checkerContainer .form-group.weak::before {
+  color: rgb(239, 68, 68);
+}
+
+.checkerContainer .form-group.medium #passwordChecker {
+  color: rgb(251, 191, 36);
+  border: 2px solid rgb(251, 191, 36);
+}
+
+.checkerContainer .form-group.medium::before {
+  color: rgb(251, 191, 36);
+}
+
+.checkerContainer .form-group.strong::before {
+  color: rgb(34, 197, 94);
+}
+
+.checkerContainer .message.weak {
+  color: rgb(239, 68, 68) !important;
+}
+
+.checkerContainer .message.medium {
+  color: rgb(251, 191, 36) !important;
+}
+
+.checkerContainer .form-group.strong #passwordChecker {
+  color: rgb(34, 197, 94);
+  border: 2px solid rgb(34, 197, 94);
+}
+
+.checkerContainer .message.strong {
+  color: rgb(34, 197, 94) !important;
+}
+
+.checkerContainer .form-group input:focus {
+  background: #4f4b4b;
+}
+
+.checkerContainer .message {
+  margin-top: 0.4rem;
+  color: #ccccccbd;
+  margin-bottom: 0.8rem;
+}
+
+.feedback li {
+  color: #666;
+  font-size: 14px;
+}
+
+.feedback li:before {
+  content: "•";
+  margin-right: 5px;
+}
+
+/* Example of changing feedback color based on strength */
+.weak .feedback li { color: #d9534f; }
+.medium .feedback li { color: #f0ad4e; }
+.strong .feedback li { color: #5cb85c; }
