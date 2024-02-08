@@ -65,6 +65,11 @@ let checkPasswordStrength = (password) => {
 };
 
 input.addEventListener("keyup", (e) => {
+  // Inside your keyup event before adding the class
+  li.classList.remove("feedback-message"); // Remove class if it was previously there
+  li.offsetHeight; // Force reflow/repaint
+  li.classList.add("feedback-message"); // Re-add the class to trigger the animation
+
   let password = e.target.value;
 
   password != ""
@@ -87,10 +92,10 @@ input.addEventListener("keyup", (e) => {
     // Clear previous feedback
     feedbackList.innerHTML = "";
 
-    // Display detailed feedback
     result.feedback.forEach((item) => {
-      let li = document.createElement("li");
+      let li = document.createElement('li');
       li.textContent = item;
+      li.classList.add('feedback-item'); // This class will be used for the animation
       feedbackList.appendChild(li);
     });
 
@@ -110,4 +115,3 @@ passTypeToggle.addEventListener("click", (e) => {
   document.querySelector(".passTypeToggle i").classList.toggle("fa-eye");
   document.querySelector(".passTypeToggle i").classList.toggle("fa-eye-slash");
 });
-
